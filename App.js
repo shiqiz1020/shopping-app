@@ -4,13 +4,20 @@ import { Provider } from 'react-redux';
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
 
+// UNCOMMENT THIS IN DEBUGGING MODE
+// import { composeWithDevTools } from 'redux-devtools-extension';
+
 import productsReducer from './store/reducers/products';
+import cartReducer from './store/reducers/cart';
 import ShopNavigator from './navigation/ShopNavigator';
 
 const rootReducer = combineReducers({
-  products: productsReducer
+  products: productsReducer,
+  cart: cartReducer
 });
 
+// USE THIS IN DEBUGGING MODE
+// const store = createStore(rootReducer, composeWithDevTools());
 const store = createStore(rootReducer);
 
 const fetchFonts = () => {
