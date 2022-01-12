@@ -7,15 +7,17 @@ export const deleteProduct = productId => {
 };
 
 export const createProduct = (title, description, imageUrl, price) => {
-  return {
-    type: CREATE_PRODUCT,
-    productData: {
-      title,
-      description,
-      imageUrl,
-      price
-    }
-  };
+  return dispatch =>  {
+    dispatch({
+      type: CREATE_PRODUCT,
+      productData: {
+        title,
+        description,
+        imageUrl,
+        price
+      }
+    });
+  }
 };
 
 export const updateProduct = (id, title, description, imageUrl) => {
