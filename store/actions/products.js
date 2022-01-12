@@ -31,7 +31,6 @@ export const fetchProducts = () => {
             resData[key].price
           )
         );
-  
       }
   
       dispatch({ type: SET_PRODUCTS, products: loadedProducts });
