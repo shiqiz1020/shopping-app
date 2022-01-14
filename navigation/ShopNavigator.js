@@ -72,28 +72,36 @@ const AdminNavigator = createStackNavigator({
     defaultNavigationOptions: defaultNavOptions
 });
 
-const ShopNavigator = createDrawerNavigator({
-    Products: ProductsNavigator,
-    Orders: OrdersNavigator,
-    Admin: AdminNavigator
-}, {
-    contentOptions: {
-        activeTintColor: Colors.primary
+const ShopNavigator = createDrawerNavigator(
+    {
+      Products: ProductsNavigator,
+      Orders: OrdersNavigator,
+      Admin: AdminNavigator
     },
-    contentComponent: props => {
+    {
+      contentOptions: {
+        activeTintColor: Colors.primary
+      },
+      contentComponent: props => {
         const dispatch = useDispatch();
-
-        return <View style={{flex: 1, padding: 20}}>
-            <SafeAreaView forceInset={{top: 'always', horizontal: 'never'}}>
-                <DrawerItems {...props}/> 
-                <Button title='Logout' color={Colors.primary} onPress={() => {
-                    dispatch(authActions.logout());
-                    props.navigation.navigate('Auth');
-                }}/>
+        return (
+          <View style={{ flex: 1, paddingTop: 20 }}>
+            <SafeAreaView forceInset={{ top: 'always', horizontal: 'never' }}>
+              <DrawerItems {...props} />
+              <Button
+                title="Logout"
+                color={Colors.primary}
+                onPress={() => {
+                  dispatch(authActions.logout());
+                  // props.navigation.navigate('Auth');
+                }}
+              />
             </SafeAreaView>
-        </View>
+          </View>
+        );
+      }
     }
-});
+  );
 
 const AuthNavigator = createStackNavigator({
     Auth: AuthScreen
